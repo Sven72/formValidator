@@ -21,17 +21,20 @@ let isValidEmail = (email) => {
     return re.test(String(email).toLowerCase());
 }
 
+let checkRequired = (inputArr) => {
+    inputArr.forEach((input) => {
+        input.value.trim() === '' ? showError(input, `${getFieldName(input)} is required`) : showSuccess(input);
+    })
+}
+
+let getFieldName = (input) => {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    !username.value ? showError(username, 'Username is required') : showSuccess(username);
 
-    !email.value ? showError(email, 'Email is required') : showSuccess(email);
-
-    !isValidEmail(email.value) ? showError(email, 'Email is not valid') : showSuccess(email);
-
-    !password.value ? showError(password, 'Password is required') : showSuccess(password);
-
-    !password2.value ? showError(password2, 'Password2 is required') : showSuccess(password2);
+    checkRequired([username, email, password, password2]);
 
 })
