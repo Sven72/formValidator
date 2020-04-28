@@ -8,7 +8,7 @@ let showError = (input, message) => {
     const formControl = input.parentElement;
     formControl.className = 'form-control error';
     const samll = formControl.querySelector('small');
-    samll.innerText = message;
+    small.innerText = message;
 }
 
 let showSuccess = (input) => {
